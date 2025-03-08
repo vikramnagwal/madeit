@@ -1,14 +1,23 @@
 'use client';
 
-import { Mobile } from "@/packages/components/mobile";
-import { NotificationCard } from "@/packages/components/notification-card";
+import { Mobile } from "@/components/mobile";
+import { NotificationCard } from "@/components/notification-card";
+import { Dropdown } from "@/packages/ui/dropdown-menu";
 import { Tab } from "@/packages/ui/tab";
+
+const menu = [
+  {id: 1, label: "Home"},
+  {id: 2, label: "About"},
+  {id: 3, label: "Contact"},
+  {id: 4, label: "Services"},
+  {id: 5, label: "Portfolio"},
+]
 
 
 export default function Home() {
-  
   return (
     <div>
+      {/* <Dropdown title="carrier" data={menu} /> */}
       <Tab
         variant="ghost"
         options={[
@@ -22,7 +31,7 @@ export default function Home() {
                 options={{
                   networkCarrier: "Airtel",
                   wallpaper:
-                    "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNhcnN8ZW58MHx8MHx8fDA%3D",
+                    "https://i.pinimg.com/474x/17/b7/72/17b772d08701170c2af723db64daebcb.jpg",
                 }}
                 children={
                   <NotificationCard
@@ -45,7 +54,7 @@ export default function Home() {
                 options={{
                   networkCarrier: "AT&T",
                   wallpaper:
-                    "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGNhcnN8ZW58MHx8MHx8fDA%3D",
+                    "https://i.pinimg.com/474x/c8/a6/c5/c8a6c53699473ef22ba8d89c7f13465d.jpg",
                 }}
                 children={
                   <NotificationCard

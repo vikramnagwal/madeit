@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { cva, VariantProps } from "class-variance-authority";
 import { LayoutGroup } from "framer-motion";
 import { useId } from "react";
+import { cn } from "../utils/cn";
 
 const tabButtonVariants = cva(
   "px-4 py-2 rounded-md duration-75 text-sm font-normal cursor-pointer",
@@ -20,13 +21,14 @@ const tabButtonVariants = cva(
 
 export function Tab<T extends string>({ 
   variant,
-  options
+  options,
+  className,
 }: VariantProps<typeof tabButtonVariants> & {
-  options: {id: T, label: string, children: React.ReactNode}[],
+  options: {id: T, label: string, children: React.ReactNode}[], className?: T,
 }) {
   const layoutId = useId();
   return (
-    <figure className="flex flex-col justify-center space-y-4">
+    <figure className={cn("flex flex-col justify-center space-y-4", className)}>
       <Tabs defaultValue={options[0].id}>
         <TabsList className="flex space-x-4">
           <LayoutGroup id={layoutId}>
