@@ -2,7 +2,7 @@
 
 import { cva, VariantProps } from "class-variance-authority";
 import { PropsWithChildren, createContext, useState } from "react";
-import { cn } from "../packages/utils/cn";
+import { cn } from "../utils/cn";
 import { IoBatteryHalfOutline, IoLockClosed } from "react-icons/io5"
 import { PiCellSignalFull, PiCellSignalHighLight } from "react-icons/pi";
 import { MdBattery80 } from "react-icons/md";
@@ -25,15 +25,6 @@ const mobileVariants = cva(
   }
 );
 
-type MobileProps = PropsWithChildren<{
-  variant: "iphone" | "android";
-  notificationNumber?: number;
-  options: MobileOptionsProps;
-  className?: string;
-  children: React.ReactNode;
-}> &
-  VariantProps<typeof mobileVariants>;
-
 type MobileOptionsProps = {
   networkCarrier?:
     | "Airtel"
@@ -46,9 +37,19 @@ type MobileOptionsProps = {
     | "AT&T"
     | "TFW"
     | "MetroPCS";
-    wallpaper: string;
-    hideSender?: boolean;
+  wallpaper: string;
+  hideSender?: boolean;
+  batteryPercentage?: number;
 };
+
+type MobileProps = PropsWithChildren<{
+  variant: "iphone" | "android";
+  notificationNumber?: number;
+  options: MobileOptionsProps;
+  className?: string;
+  children: React.ReactNode;
+}> &
+  VariantProps<typeof mobileVariants>;
 
 export const MobileTypeContext = createContext<Pick<MobileProps, "variant">>({
   variant: "iphone",
@@ -71,7 +72,7 @@ export function Mobile({ variant, notificationNumber = 1,options ,className, chi
       />
       {/* mobile navbar */}
       <div className="flex items-center justify-between px-4 py-1 absolute top-2 left-1/2 -translate-x-1/2 w-full">
-        <p className="text-sm">{options.networkCarrier}</p>
+        <p className="text-xs font-thin">{options.networkCarrier}</p>
         <div className="flex items-center space-x-2">
           {variant === "iphone" ? (
             <>
@@ -80,9 +81,12 @@ export function Mobile({ variant, notificationNumber = 1,options ,className, chi
             </>
           ) : (
             <>
-              <PiCellSignalHighLight className="text-2xl mx-0" />
-              <PiCellSignalFull className="text-xl mx-0" />
-              <MdBattery80 className="text-xl mx-0 mb-1" />
+              <PiCellSignalFull className="text-lg mx-0" />
+              <PiCellSignalFull className="text-lg mx-1" />
+              <span className="flex items-center">
+                <p className="text-xs">{options.batteryPercentage}%</p>
+                <MdBattery80 className="text-xl mx-0 mb-1" />
+              </span>
             </>
           )}
         </div>
@@ -95,6 +99,9 @@ export function Mobile({ variant, notificationNumber = 1,options ,className, chi
         ) : (
           <div className="mt-12 text-6xl w-full font-light">
             <span className="text-start">{time}</span>
+            <p className="text-base opacity-90 text-start px-4">
+              {moment().format("ddd, MMM YY")}
+            </p>
           </div>
         )}
       </div>
