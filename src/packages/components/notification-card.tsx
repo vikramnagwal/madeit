@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { MobileTypeContext } from "./mobile";
 import { cva } from "class-variance-authority";
 import Balancer from "react-wrap-balancer";
-import { cn } from "../packages/utils/cn";
-import { Gumroad } from "../packages/icons/gumroad";
+import { cn } from "../utils/cn";
+import { Gumroad } from "../icons/gumroad";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
 
@@ -25,13 +25,6 @@ type NotificationOptionsProps = {
 	className?: string;
 }
 
-interface NotificationCardProps {
-	title: string;
-	description: string;
-	date?: Date;
-	sender?: string;
-	className?: string;
-}
 
 export function NotificationCard({
 	from = 'New Notification',

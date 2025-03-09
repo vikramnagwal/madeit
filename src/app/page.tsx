@@ -1,23 +1,14 @@
 'use client';
 
-import { Mobile } from "@/components/mobile";
-import { NotificationCard } from "@/components/notification-card";
-import { Dropdown } from "@/packages/ui/dropdown-menu";
+import { Mobile } from "@/packages/components/mobile";
+import { NotificationCard } from "@/packages/components/notification-card";
+import { Wallpaper } from "@/packages/components/wallpaper";
 import { Tab } from "@/packages/ui/tab";
-
-const menu = [
-  {id: 1, label: "Home"},
-  {id: 2, label: "About"},
-  {id: 3, label: "Contact"},
-  {id: 4, label: "Services"},
-  {id: 5, label: "Portfolio"},
-]
-
 
 export default function Home() {
   return (
     <div>
-      {/* <Dropdown title="carrier" data={menu} /> */}
+      <Wallpaper />
       <Tab
         variant="ghost"
         options={[
@@ -53,6 +44,7 @@ export default function Home() {
                 variant="android"
                 options={{
                   networkCarrier: "AT&T",
+                  batteryPercentage:59,
                   wallpaper:
                     "https://i.pinimg.com/474x/c8/a6/c5/c8a6c53699473ef22ba8d89c7f13465d.jpg",
                 }}
