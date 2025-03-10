@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "path": "/one.webp",
+        "title": "Wallpaper 1"
+    },
+    {
+        "id": 2,
+        "path": "/two.jpg",
+        "title": "Wallpaper 2"
+    },
+    {
+        "id": 3,
+        "path": "/three.webp",
+        "title": "Wallpaper 3"
+    },
+    {
+        "id": 4,
+        "path": "/four.webp",
+        "title": "Wallpaper 4"
+    },
+    {
+        "id": 5,
+        "path": "/five.webp",
+        "title": "Wallpaper 5"
+    }
+]
