@@ -1,0 +1,11 @@
+[
+  { "id": 1, "label": "Airtel" },
+  { "id": 2, "label": "Vi" },
+  { "id": 3, "label": "Jio" },
+  { "id": 4, "label": "Sprint" },
+  { "id": 5, "label": "T-Mobile" },
+  { "id": 6, "label": "Verizon" },
+  { "id": 7, "label": "AT&T" },
+  { "id": 8, "label": "TFW" },
+  { "id": 9, "label": "MetroPCS" }
+]

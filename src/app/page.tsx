@@ -1,16 +1,21 @@
 'use client';
-
+import { DataForm } from "@/packages/components/form";
 import { Mobile } from "@/packages/components/mobile";
 import { NotificationCard } from "@/packages/components/notification-card";
-import { Wallpaper } from "@/packages/components/wallpaper";
 import { Tab } from "@/packages/ui/tab";
+
 
 export default function Home() {
   return (
-    <div>
-      <Wallpaper />
+    <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex-1">
+        <DataForm
+          title="Generate Fake Monthly Recurring Revnue Snapshots"
+          description="Share and have fun vi sharing your fak mrr snapshots with your friends"
+        />
+      </div>
       <Tab
-        variant="ghost"
+        className="flex-1"
         options={[
           {
             id: "iphone",
@@ -21,8 +26,6 @@ export default function Home() {
                 notificationNumber={2}
                 options={{
                   networkCarrier: "Airtel",
-                  wallpaper:
-                    "https://i.pinimg.com/474x/17/b7/72/17b772d08701170c2af723db64daebcb.jpg",
                 }}
                 children={
                   <NotificationCard
@@ -44,9 +47,7 @@ export default function Home() {
                 variant="android"
                 options={{
                   networkCarrier: "AT&T",
-                  batteryPercentage:59,
-                  wallpaper:
-                    "https://i.pinimg.com/474x/c8/a6/c5/c8a6c53699473ef22ba8d89c7f13465d.jpg",
+                  batteryPercentage: 59,
                 }}
                 children={
                   <NotificationCard

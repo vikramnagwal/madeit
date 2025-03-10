@@ -8,7 +8,7 @@ const dropdownContentVariant = cva(
   {
     variants: {
       variant: {
-        default: "bg-white text-black rounded-md",
+        default: "bg-white text-black rounded-md dark:bg-black dark:text-white",
         cheers: "bg-black text-white border border-white rounded-lg",
         white: "bg-transparent text-black border border-black rounded-md",
       },
@@ -22,7 +22,7 @@ const dropdownContentVariant = cva(
 type DropdownContentProps = PropsWithChildren<{
     variant?: "default" | "cheers" | "white";
     className?: string;
-    options: { id: number, label: string }[];
+    options: { id: number, label: string, children?: React.ReactNode }[];
     onSelect: (label: string) => void;
 }> & VariantProps<typeof dropdownContentVariant>;
 
@@ -30,13 +30,19 @@ export function DropdownContent({ variant, className, options, onSelect }: Dropd
     
     function handleSelect(label: string) {
         onSelect(label);
-        console.log(`variant: ${variant}`);
-        console.log(`Selected: ${label}`);
     }
     return (
-      <DropdownMenuContent className={cn(dropdownContentVariant({ variant }), className)}>
-        {options.map(({ id, label }) => (
-          <DropdownMenuItem key={id} className="p-1 cursor-pointer border-none" onClick={() => handleSelect(label)}>{label}</DropdownMenuItem>
+      <DropdownMenuContent
+        className={cn(dropdownContentVariant({ variant }), className)}
+      >
+        {options.map(({ id, label, children }) => (
+          <DropdownMenuItem
+            key={id}
+            className="p-1 cursor-pointer dark:hover:bg-slate-200 dark:hover:text-black duration-75 border-none flex justify-between"
+            onClick={() => handleSelect(label)}
+          >
+            {label} <span className="opacity-60">{children}</span>
+          </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />
       </DropdownMenuContent>

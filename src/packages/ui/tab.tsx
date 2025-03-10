@@ -9,12 +9,12 @@ const tabButtonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-white text-black",
+        default: "bg-white text-black w-24 mb-4 dark:bg-black dark:text-white",
         ghost: "bg-transparent border border-gray-400",
       },
     },
     defaultVariants: {
-      variant: "primary",
+      variant: "default",
     },
   }
 );
@@ -30,7 +30,7 @@ export function Tab<T extends string>({
   return (
     <figure className={cn("flex flex-col justify-center space-y-4", className)}>
       <Tabs defaultValue={options[0].id}>
-        <TabsList className="flex space-x-4">
+        <TabsList className="flex justify-center items-center gap-4 space-x-4 my-2">
           <LayoutGroup id={layoutId}>
             {options.map(({ id, label }) => (
               <TabsTrigger

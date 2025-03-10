@@ -1,10 +1,11 @@
 'use client';
 
+import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { PropsWithChildren, createContext, useState } from "react";
 import { cn } from "../utils/cn";
 import { IoBatteryHalfOutline, IoLockClosed } from "react-icons/io5"
-import { PiCellSignalFull, PiCellSignalHighLight } from "react-icons/pi";
+import { PiCellSignalFull } from "react-icons/pi";
 import { MdBattery80 } from "react-icons/md";
 import moment from "moment"; 
 import { Signal } from "@/packages/icons/signal";
@@ -37,7 +38,6 @@ type MobileOptionsProps = {
     | "AT&T"
     | "TFW"
     | "MetroPCS";
-  wallpaper: string;
   hideSender?: boolean;
   batteryPercentage?: number;
 };
@@ -56,17 +56,20 @@ export const MobileTypeContext = createContext<Pick<MobileProps, "variant">>({
 });
 
 
-export function Mobile({ variant, notificationNumber = 1,options ,className, children }: MobileProps) {
+export function Mobile({ variant, notificationNumber = 1, options, className, children }: MobileProps) {
 
   const notifications = Array.from({ length: notificationNumber}, (_, i) => i);
   const hours = moment().format('h:mm');
+
+  const lsWallpaper = localStorage.getItem('wallpaper');
+  console.log('mobile:', lsWallpaper);
 
   const [time, setTime] = useState(hours);
 
   return (
     <div className={cn(mobileVariants({ variant }), "relative", className)}>
       <img
-        src={options.wallpaper}
+        src={'/one.webp'}
         alt="wallpaper"
         className="absolute inset-0 w-full h-full object-cover -z-10"
       />
@@ -85,7 +88,7 @@ export function Mobile({ variant, notificationNumber = 1,options ,className, chi
               <PiCellSignalFull className="text-lg mx-1" />
               <span className="flex items-center">
                 <p className="text-xs">{options.batteryPercentage}%</p>
-                <MdBattery80 className="text-xl mx-0 mb-1" />
+                <MdBattery80 color="white" fill="white" className="text-xl text-white mx-0 mb-1" />
               </span>
             </>
           )}
