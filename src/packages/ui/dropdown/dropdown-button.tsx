@@ -2,7 +2,8 @@ import { cn } from "@/packages/utils/cn";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 import { cva, VariantProps } from "class-variance-authority";
-import { createContext, PropsWithChildren } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
+import { DropdownContext } from "./dropdown-menu";
 
 const dropdownButtonVariants = cva(
   "m-2 flex justify-between items-center font-medium duration-75 w-48 md:w-56 cursor-pointer",
@@ -10,7 +11,7 @@ const dropdownButtonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-slate-100 text-black rounded-md border-none px-2 py-1 focus:outline-none",
+          "backdrop-blur-xl bg-white/20 rounded-md border-none px-2 py-1 focus:outline-none",
         cheers:
           "bg-transparent text-white border border-white rounded-lg px-3 py-2",
         white:
@@ -24,12 +25,12 @@ const dropdownButtonVariants = cva(
 );
 
 type DropdownButtonProps = PropsWithChildren<{
-    variant?: "default" | "cheers" | "white";
     title: string;
     className?: string;
 }> & VariantProps<typeof dropdownButtonVariants>;
 
-export function DropdownButton({  variant, title, className }: DropdownButtonProps) {
+export function DropdownButton({ title, className }: DropdownButtonProps) {
+  const { variant } = useContext(DropdownContext);
     return (
       <DropdownMenuTrigger
         className={cn(dropdownButtonVariants({ variant }), className)}

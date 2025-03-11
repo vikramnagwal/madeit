@@ -4,8 +4,8 @@ export function X(props: SVGProps<SVGSVGElement>) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="44"
-        height="44"
+        width="46`"
+        height="46"
         fill="none"
         viewBox="0 0 512 512"
         id="twitter"
