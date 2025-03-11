@@ -1,3 +1,4 @@
+'use client'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { cva, VariantProps } from "class-variance-authority";
 import { LayoutGroup } from "framer-motion";
@@ -11,6 +12,7 @@ const tabButtonVariants = cva(
       variant: {
         default: "bg-white text-black w-24 mb-4 dark:bg-black dark:text-white",
         ghost: "bg-transparent border border-gray-400",
+        glass: "bg-white/20 backdrop-blur-lg w-26 mb-4"
       },
     },
     defaultVariants: {

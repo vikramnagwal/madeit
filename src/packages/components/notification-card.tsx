@@ -20,6 +20,7 @@ type NotificationOptionsProps = {
 	from?: 'X' | 'Lemon Squeezy' | 'Paypal' | 'Gumroad' | 'New Notification';
 	description: string;
 	sender: string;
+	showSender?: boolean;
 	time?: Date;
 	timeAgo?: number;
 	className?: string;
@@ -30,6 +31,7 @@ export function NotificationCard({
 	from = 'New Notification',
 	description,
 	timeAgo = 1,
+	showSender,
 	sender,
 	className,
 }: NotificationOptionsProps) {
@@ -49,7 +51,7 @@ export function NotificationCard({
         </div>
         <p>
           <Balancer ratio={0.43} preferNative={false}>
-            {description} <span>{sender ? sender : null}</span>
+            {description} <span>{showSender ? sender : <div className="w-44 h-4 bg-black"/>}</span>
           </Balancer>
         </p>
 

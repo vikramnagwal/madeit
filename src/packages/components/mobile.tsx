@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useEffect } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { PropsWithChildren, createContext, useState } from "react";
 import { cn } from "../utils/cn";
@@ -9,6 +9,8 @@ import { PiCellSignalFull } from "react-icons/pi";
 import { MdBattery80 } from "react-icons/md";
 import moment from "moment"; 
 import { Signal } from "@/packages/icons/signal";
+import { getDateNow, getTimeNow } from "../utils/time";
+import { Wallpaper } from "./wallpaper";
 
 
 const mobileVariants = cva(
@@ -26,7 +28,7 @@ const mobileVariants = cva(
   }
 );
 
-type MobileOptionsProps = {
+export type MobileOptionsProps = {
   networkCarrier?:
     | "Airtel"
     | "Vi"
@@ -40,6 +42,8 @@ type MobileOptionsProps = {
     | "MetroPCS";
   hideSender?: boolean;
   batteryPercentage?: number;
+  date?: string;
+  wallpaper?: string;
 };
 
 type MobileProps = PropsWithChildren<{
@@ -61,15 +65,12 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
   const notifications = Array.from({ length: notificationNumber}, (_, i) => i);
   const hours = moment().format('h:mm');
 
-  const lsWallpaper = localStorage.getItem('wallpaper');
-  console.log('mobile:', lsWallpaper);
-
   const [time, setTime] = useState(hours);
 
   return (
     <div className={cn(mobileVariants({ variant }), "relative", className)}>
       <img
-        src={'/one.webp'}
+        src={options.wallpaper ? options.wallpaper : '/one.webp'}
         alt="wallpaper"
         className="absolute inset-0 w-full h-full object-cover -z-10"
       />
@@ -87,7 +88,7 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
               <PiCellSignalFull className="text-lg mx-0" />
               <PiCellSignalFull className="text-lg mx-1" />
               <span className="flex items-center">
-                <p className="text-xs">{options.batteryPercentage}%</p>
+                <p className="text-xs">{options.batteryPercentage ?? 78}%</p>
                 <MdBattery80 color="white" fill="white" className="text-xl text-white mx-0 mb-1" />
               </span>
             </>
@@ -100,11 +101,9 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
             {time}
           </span>
         ) : (
-          <div className="mt-12 text-6xl w-full font-light">
-            <span className="text-start">{time}</span>
-            <p className="text-base opacity-90 text-start px-4">
-              {moment().format("ddd, MMM YY")}
-            </p>
+          <div className="mt-12 text-6xl w-full flex flex-col text-center font-light">
+            <p className="text-start mx-auto">{time}</p>
+            <span className="text-base">{options.date}</span>
           </div>
         )}
       </div>

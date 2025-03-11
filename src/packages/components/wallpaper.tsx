@@ -3,25 +3,18 @@
 import Image from "next/image"
 import { useRef, useState } from "react"
 import wallpapers from '../data/wallpaper.json'
+import path from "path";
 
+interface WallpaperProps {
+  pickedWallpaper: (path: string) => void
+}
 
-export function Wallpaper() {
-
-    const [selectedWallpaper, setSelectedWallpaper] = useState(() => {
-        const savedWallpaper = localStorage.getItem('wallpaper')
-        if(savedWallpaper) {
-            return savedWallpaper
-        }
-       return wallpapers[0].path
-    })
+export function Wallpaper({ pickedWallpaper }: WallpaperProps) {
 
     const wallpaperRef = useRef<HTMLImageElement>(null)
 
     function handleWallpaperChange(path: string) {
-        setSelectedWallpaper(path)
-        if (selectedWallpaper && wallpapers.some(({ path }) => path === selectedWallpaper)) {
-            localStorage.setItem('wallpaper', selectedWallpaper)
-        }
+        pickedWallpaper(path)
     }
 
     return (
