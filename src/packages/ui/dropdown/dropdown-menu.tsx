@@ -7,15 +7,13 @@ import { createContext } from "react";
 
 type DropdownProps = {
   variant?: 'default' | 'cheers' | 'white',
-  title: string,
   data: { id: number, label: string, children?: React.ReactNode }[]
   onSelected?: (label: string) => void
-  value?: string
 }
 
 export const DropdownContext = createContext<Pick<DropdownProps, "variant">>({ variant: 'default' })
 
-export function Dropdown({ variant, title, data, value, onSelected }: DropdownProps) {
+export function Dropdown({ variant, data, onSelected }: DropdownProps) {
   const [selected, setSelected] = useState<string | null>(null);
 
   const handleSelect = (label: string) => {
@@ -27,7 +25,7 @@ export function Dropdown({ variant, title, data, value, onSelected }: DropdownPr
       <DropdownContext.Provider value={{ variant }}>
         <DropdownMenu>
           <DropdownButton
-            title={selected ? selected : title}
+            title={data[0].label}
           />
           <DropdownContent
             options={data}

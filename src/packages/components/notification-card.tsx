@@ -7,7 +7,7 @@ import { Gumroad } from "../icons/gumroad";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
 
-const notificationCardVariants = cva("flex items-center space-x-2 text-sm leading-4 font-light relative p-2 m-2 mt-1 shadow-md", {
+const notificationCardVariants = cva("flex items-center space-x-2 text-sm leading-4 font-light relative p-2 m-2 mt-1", {
 	variants: {
 		variant: {
 			iphone: "rounded-xl backdrop-blur-[10px] border-none bg-white/20 text-white",
@@ -18,9 +18,9 @@ const notificationCardVariants = cva("flex items-center space-x-2 text-sm leadin
 
 type NotificationOptionsProps = {
 	from?: 'X' | 'Lemon Squeezy' | 'Paypal' | 'Gumroad' | 'New Notification';
-	description: string;
 	sender: string;
 	showSender?: boolean;
+	amount: number;
 	time?: Date;
 	timeAgo?: number;
 	className?: string;
@@ -29,9 +29,9 @@ type NotificationOptionsProps = {
 
 export function NotificationCard({
 	from = 'New Notification',
-	description,
 	timeAgo = 1,
-	showSender,
+	showSender = true,
+	amount,
 	sender,
 	className,
 }: NotificationOptionsProps) {
@@ -51,7 +51,7 @@ export function NotificationCard({
         </div>
         <p>
           <Balancer ratio={0.43} preferNative={false}>
-            {description} <span>{showSender ? sender : <div className="w-44 h-4 bg-black"/>}</span>
+           You recieved a pyment of { amount } from <span>{showSender ? sender : <div className="w-44 h-4 bg-black"/>}</span>
           </Balancer>
         </p>
 
