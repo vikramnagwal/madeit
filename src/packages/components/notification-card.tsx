@@ -3,21 +3,24 @@ import { MobileTypeContext } from "./mobile";
 import { cva } from "class-variance-authority";
 import Balancer from "react-wrap-balancer";
 import { cn } from "../utils/cn";
-import { Gumroad } from "../icons/gumroad";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import { LemonSqueezy, Gumroad, X, Stripe } from "../icons/index";
+import { PiPaypalLogo } from "react-icons/pi";
+import { IoNotificationsCircle } from "react-icons/io5";
 
 
-const notificationCardVariants = cva("flex items-center space-x-2 text-sm leading-4 font-light relative p-2 m-2 mt-1", {
+
+const notificationCardVariants = cva("flex items-center space-x-1 text-sm leading-4 font-light relative p-2 m-2 mt-1", {
 	variants: {
 		variant: {
-			iphone: "rounded-xl backdrop-blur-[10px] border-none bg-white/20 text-white",
+			iphone: "rounded-xl backdrop-blur-[10px] border-none bg-white/30 text-white",
 			android: "rounded-[10px] bg-white/80 text-black card",
 		},
 	},
 });
 
-type NotificationOptionsProps = {
-	from?: 'X' | 'Lemon Squeezy' | 'Paypal' | 'Gumroad' | 'New Notification';
+export type NotificationOptionsProps = {
+	from?: 'X' | 'Stripe' | 'Lemon Squeezy' | 'Paypal' | 'Gumroad' | 'New Notification';
 	sender: string;
 	showSender?: boolean;
 	amount: number;
@@ -26,6 +29,14 @@ type NotificationOptionsProps = {
 	className?: string;
 }
 
+const notificationIcons = [
+	{ name: "X", icon: <X /> , title: "You got paid!", description: "has been deposited into your account"},
+	{ name: "Stripe", icon: <Stripe />, title: "Stripe" },
+	{ name: "Lemon Squeezy", icon: <LemonSqueezy />, title: "You made a sale!" },
+	{ name: "Paypal", icon: <PiPaypalLogo />, title: "Paypal" },
+	{ name: "Gumroad", icon: <Gumroad />, title: "Gumroad" },
+	{ name: "New Notification", icon: <IoNotificationsCircle />, title: "New Notification" },
+]
 
 export function NotificationCard({
 	from = 'New Notification',
@@ -35,23 +46,49 @@ export function NotificationCard({
 	sender,
 	className,
 }: NotificationOptionsProps) {
+
 	const { variant } = useContext(MobileTypeContext);
 
 	return (
     <div className={cn(notificationCardVariants({ variant }), className)}>
-      <div>
-        <Gumroad />
+      <div className="z-30">
+        {notificationIcons.find((icon) => icon.name === from)?.icon}
       </div>
+
       <div className="flex flex-col w-full">
-        <div className="flex items-center justify-between mb-1">
-          <h1 className="font-semibold">{from}</h1>
-		  {variant === "iphone" && (<span className="text-xs opacity-80">
-			{timeAgo}h ago
-		  </span>)}
+        <div
+          className={cn(
+            `flex items-center mb-1`,
+            variant === "iphone" && "justify-between"
+          )}
+        >
+          <h1 className="font-poppins text-[14px] font-[400]">
+            {notificationIcons.find((icon) => icon.name === from)?.title}
+          </h1>
+          <span className="text-xs opacity-80 mx-2">{timeAgo}h ago</span>
         </div>
-        <p>
-          <Balancer ratio={0.43} preferNative={false}>
-           You recieved a pyment of { amount } from <span>{showSender ? sender : <div className="w-44 h-4 bg-black"/>}</span>
+        <p className="font-poppins text-[13px]">
+          <Balancer ratio={0.18} preferNative={false}>
+            {from === "X" ? (
+              <>
+                ${amount ? amount.toFixed(2) : "9.57"}{" "}
+                {
+                  notificationIcons.find((icon) => icon.name === from)
+                    ?.description
+                }{" "}
+              </>
+            ) : (
+              <>
+			  you recieved a payment of ${amount ? amount.toFixed(2) : "9.57"} from{" "}
+                <span>
+                  {showSender ? (
+                    <span>{sender}</span>
+                  ) : (
+                    <span className="inline-block w-32 h-4 bg-black backdrop-blur-lg z-30 align-middle" />
+                  )}
+                </span>
+              </>
+            )}
           </Balancer>
         </p>
 

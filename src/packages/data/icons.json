@@ -1,5 +1,6 @@
 [
-    {"id": 1, "label": "gumroad"},
+    {"id": 1, "label": "Gumroad"},
     {"id": 2, "label": "X"},
-    {"id": 3, "label": "lemonSqueezy"}
+    {"id": 3, "label": "Lemon Squeezy"},
+    {"id": 4, "label": "Stripe"}
 ]

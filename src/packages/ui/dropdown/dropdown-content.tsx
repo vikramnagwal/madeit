@@ -4,7 +4,7 @@ import { PropsWithChildren, useContext } from "react";
 import { DropdownContext } from "./dropdown-menu";
 
 const dropdownContentVariant = cva(
-  "p-2 m-2 w-48 md:w-56 shadow-md duration-75",
+  "p-2 m-2 w-48 md:w-56 shadow-md duration-75 z-40",
   {
     variants: {
       variant: {
@@ -37,7 +37,7 @@ export function DropdownContent({ options, onSelect }: DropdownContentProps) {
         {options.map(({ id, label, children }) => (
           <DropdownMenuItem
             key={id}
-            className="p-1 m-1 border-none outline-none focus:outline-none hover:backdrop-blur-md duration-75 rounded-md flex justify-between"
+            className="py-1 px-2 cursor-pointer m-1 border-none outline-none focus:outline-none hover:backdrop-blur-md duration-75 rounded-md flex justify-between"
             onClick={() => handleSelect(label)}
           >
             {label} <span className="opacity-60">{children}</span>

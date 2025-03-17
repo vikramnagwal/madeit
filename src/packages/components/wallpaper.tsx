@@ -1,17 +1,13 @@
 'use client'; 
 
 import Image from "next/image"
-import { useRef, useState } from "react"
 import wallpapers from '../data/wallpaper.json'
-import path from "path";
 
 interface WallpaperProps {
   pickedWallpaper: (path: string) => void
 }
 
 export function Wallpaper({ pickedWallpaper }: WallpaperProps) {
-
-    const wallpaperRef = useRef<HTMLImageElement>(null)
 
     function handleWallpaperChange(path: string) {
         pickedWallpaper(path)
@@ -22,7 +18,6 @@ export function Wallpaper({ pickedWallpaper }: WallpaperProps) {
         {wallpapers.map(({ id, path, title }) => (
             <Image
               key={id}
-              ref={wallpaperRef}
               src={path}
               alt={title}
               width={100}
