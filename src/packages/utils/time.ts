@@ -9,7 +9,7 @@ export function getTimeNow() {
 }
 
 export function getDateNow() {
-    return formatDate("MMMM Do YYYY");
+    return formatDate("dddd Do MMMM");
 }
 
 export function timeAgo(day: number) {

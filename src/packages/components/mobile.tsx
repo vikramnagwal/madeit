@@ -41,7 +41,7 @@ export type MobileOptionsProps = {
     | "MetroPCS";
   hideSender?: boolean;
   batteryPercentage?: number;
-  date?: string;
+  date: string;
   wallpaper?: string;
 };
 
@@ -67,9 +67,8 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
   const [time, setTime] = useState(hours);
 
   const { downloadImage } = useDownload();
-
   return (
-    <>
+    <div className="flex flex-col justify-center">
       <div
         className={cn(mobileVariants({ variant }), "relative", className)}
         id="image"
@@ -106,19 +105,25 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
         </div>
         <div className="mx-auto text-white mt-[40px]">
           {variant === "iphone" ? (
-            <span className="text-[50px] leading-loose slashed-zero font-poppins font-[600]">
-              {time}
-            </span>
+            <div className="flex flex-col text-center mt-6">
+              <p className="text-lg text-balance">{options.date}</p>
+              <span className="text-[60px] slashed-zero font-poppins font-[600]">
+                {time}
+              </span>
+            </div>
           ) : (
             <div className="mt-12 text-6xl w-full flex flex-col text-center font-light">
               <p className="text-start mx-auto">{time}</p>
-              <span className="text-base">{options.date}</span>
+              <p className="text-base text-balance">{options.date}</p>
             </div>
           )}
         </div>
 
         {variant === "iphone" ? (
-          <div id="dock" className="flex justify-between items-center px-2 absolute top-2 left-1/2 -translate-x-1/2 bg-black z-20 w-24 h-8 rounded-full">
+          <div
+            id="dock"
+            className="flex justify-between items-center px-2 absolute top-2 left-1/2 -translate-x-1/2 bg-black z-20 w-24 h-8 rounded-full"
+          >
             <IoLockClosed />
             <div className="w-4 h-4 rounded-full bg-white/20" />
           </div>
@@ -135,14 +140,14 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
           </MobileTypeContext.Provider>
         </div>
       </div>
-      <div>
+      <div className="text-center mx-auto w-full">
         <button
           onClick={() => downloadImage()}
-          className="bg-red-600 text-white p-2 rounded-md cursor-pointer"
+          className="bg-red-600 w-[300px] text-white p-2 rounded-md cursor-pointer mx-auto mt-4"
         >
           download
         </button>
       </div>
-    </>
+    </div>
   );
 }

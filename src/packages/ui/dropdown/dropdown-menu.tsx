@@ -21,11 +21,11 @@ export function Dropdown({ variant, data, onSelected }: DropdownProps) {
     onSelected && onSelected(label)
   }
   return (
-    <div className="gap-3 align-center px-4">
+    <div>
       <DropdownContext.Provider value={{ variant }}>
         <DropdownMenu>
           <DropdownButton
-            title={data[0].label}
+            title={selected ? selected : data[0].label}
           />
           <DropdownContent
             options={data}
