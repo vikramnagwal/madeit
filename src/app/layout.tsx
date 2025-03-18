@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Provider } from "react-wrap-balancer";
 import Head from "next/head";
+import Script from "next/script";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -70,6 +71,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+<Script strategy="lazyOnload" async src="https://www.googletagmanager.com/gtag/js?id=G-NMTT4BQ1EF"></Script>
+<Script id="google-analytics-2" strategy="lazyOnload">{`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NMTT4BQ1EF');
+  `}
+</Script>
         <Provider>{children}</Provider>
         <Analytics />
       </body>
