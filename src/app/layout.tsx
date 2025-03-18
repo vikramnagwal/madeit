@@ -64,6 +64,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/madeit.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="canonical" href="https://madeit.vercel.app" />
+
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
