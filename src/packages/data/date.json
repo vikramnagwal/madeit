@@ -1,5 +1,14 @@
 [
+     {
+        "id": 1,
+        "label": "Today"
+    },
     {
-        
+        "id": 2,
+        "label": "yesterday"
+    },
+    {
+        "id": 3,
+        "label": "2 days ago"
     }
 ]

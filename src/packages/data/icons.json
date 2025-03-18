@@ -2,5 +2,6 @@
     {"id": 1, "label": "Gumroad"},
     {"id": 2, "label": "X"},
     {"id": 3, "label": "Lemon Squeezy"},
-    {"id": 4, "label": "Stripe"}
+    {"id": 4, "label": "Stripe"},
+    {"id": 5, "label": "Paypal"}
 ]
