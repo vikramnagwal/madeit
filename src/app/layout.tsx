@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Provider } from "react-wrap-balancer";
 import Head from "next/head";
@@ -70,6 +71,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );
