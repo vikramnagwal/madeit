@@ -1,6 +1,5 @@
-import { SVGProps } from "react";
 
-export function Signal(props: SVGProps<SVGSVGElement>) {
+export function Signal() {
     return (
       <svg
         fill="#ffffff"

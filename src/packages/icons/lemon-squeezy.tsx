@@ -1,5 +1,3 @@
-import { SVGProps } from "react";
-
 export function LemonSqueezy() {
   return (
     <svg

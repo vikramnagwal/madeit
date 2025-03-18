@@ -3,7 +3,7 @@
 import React from "react";
 import moment from "moment"; 
 import { cva, VariantProps } from "class-variance-authority";
-import { PropsWithChildren, createContext, useState } from "react";
+import { PropsWithChildren, createContext } from "react";
 import { cn } from "../utils/cn";
 import { IoBatteryHalfOutline, IoLockClosed } from "react-icons/io5"
 import { PiCellSignalFull } from "react-icons/pi";

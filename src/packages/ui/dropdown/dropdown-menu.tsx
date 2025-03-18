@@ -18,7 +18,7 @@ export function Dropdown({ variant, data, onSelected }: DropdownProps) {
 
   const handleSelect = (label: string) => {
     setSelected(label);
-    onSelected && onSelected(label)
+    onSelected?.(label)
   }
   return (
     <div>
