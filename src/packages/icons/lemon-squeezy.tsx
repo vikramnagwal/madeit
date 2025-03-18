@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function LemonSqueezy(props: SVGProps<SVGSVGElement>) {
+export function LemonSqueezy() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,6 @@ export function LemonSqueezy(props: SVGProps<SVGSVGElement>) {
       fill="none"
       viewBox="0 0 256 256"
       id="lemon"
-      {...props}
     >
       <rect width="224" height="224" x="16" y="16" fill="#EEE" rx="70"></rect>
       <path
