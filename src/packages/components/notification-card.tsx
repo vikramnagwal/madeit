@@ -4,8 +4,7 @@ import { cva } from "class-variance-authority";
 import Balancer from "react-wrap-balancer";
 import { cn } from "../utils/cn";
 import { HiOutlineChevronDown } from "react-icons/hi";
-import { LemonSqueezy, Gumroad, X, Stripe } from "../icons/index";
-import { PiPaypalLogo } from "react-icons/pi";
+import { LemonSqueezy, Gumroad, X, Stripe, Paypal } from "../icons/index";
 import { IoNotificationsCircle } from "react-icons/io5";
 
 
@@ -33,7 +32,7 @@ const notificationIcons = [
 	{ name: "X", icon: <X /> , title: "You got paid!", description: "has been deposited into your account"},
 	{ name: "Stripe", icon: <Stripe />, title: "Stripe" },
 	{ name: "Lemon Squeezy", icon: <LemonSqueezy />, title: "You made a sale!" },
-	{ name: "Paypal", icon: <PiPaypalLogo />, title: "Paypal" },
+	{ name: "Paypal", icon: <Paypal />, title: "Paypal" },
 	{ name: "Gumroad", icon: <Gumroad />, title: "Gumroad" },
 	{ name: "New Notification", icon: <IoNotificationsCircle />, title: "New Notification" },
 ]
@@ -41,7 +40,7 @@ const notificationIcons = [
 export function NotificationCard({
 	from = 'New Notification',
 	timeAgo = 1,
-	showSender = true,
+	showSender,
 	amount,
 	sender,
 	className,
@@ -54,7 +53,6 @@ export function NotificationCard({
       <div className="z-30">
         {notificationIcons.find((icon) => icon.name === from)?.icon}
       </div>
-
       <div className="flex flex-col w-full">
         <div
           className={cn(
@@ -79,7 +77,8 @@ export function NotificationCard({
               </>
             ) : (
               <>
-			  you recieved a payment of ${amount ? amount.toFixed(2) : "9.57"} from{" "}
+                you recieved a payment of ${amount ? amount.toFixed(2) : "9.57"}{" "}
+                from{" "}
                 <span>
                   {showSender ? (
                     <span>{sender}</span>

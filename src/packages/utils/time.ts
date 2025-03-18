@@ -12,7 +12,7 @@ export function getDateNow() {
     return formatDate("dddd Do MMMM");
 }
 
-export function timeAgo(day: number) {
+export function dateAgo(day: number) {
     return moment().subtract(day, 'days').format("MMMM Do YYYY");
 }
 

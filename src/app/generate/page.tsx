@@ -12,7 +12,8 @@ import { HiEyeSlash } from "react-icons/hi2";
 import { Wallpaper } from "@/packages/components/wallpaper";
 import icondata from "@/packages/data/icons.json";
 import Balancer from "react-wrap-balancer";
-import { getDateNow } from "@/packages/utils/time";
+import { dateAgo, getDateNow } from "@/packages/utils/time";
+import dateData from "@/packages/data/date.json";
 
 
 export default function GeneratePage() {
@@ -28,6 +29,7 @@ export default function GeneratePage() {
   const [paidFrom, setPaidFrom] = useState<NotificationOptionsProps["from"]>("Paypal");
   const [date, setDate] = useState<string>(getDateNow());
 
+
   function handleCarrierChange(carrier: string) {
     setNetworkCarrier(carrier as MobileOptionsProps["networkCarrier"]);
   }
@@ -38,6 +40,18 @@ export default function GeneratePage() {
   
   function handlePaidFromChange(paidBy: string) {
     setPaidFrom(paidBy as NotificationOptionsProps["from"]);
+  }
+
+  function handledateChange(date: string) {
+    console.log(date)
+    if (date === "Today") {
+      setDate(getDateNow());
+    } else if (date === "yesterday") {
+      console.log(dateAgo(1));
+      setDate(dateAgo(1));
+    } else if (date === "2 days ago") {
+      setDate(dateAgo(2));
+    }
   }
 
   return (
@@ -104,11 +118,11 @@ export default function GeneratePage() {
               type="number"
               placeholder="78%"
               onChange={(e) => {
-                if(Number(e.target.value) > 100) {
+                if (Number(e.target.value) > 100) {
                   return;
                 }
                 if (Number(e.target.value) < 38) {
-                  setBatteryPercentage(56)
+                  setBatteryPercentage(56);
                 }
                 setBatteryPercentage(Number(e.target.value));
               }}
@@ -135,13 +149,18 @@ export default function GeneratePage() {
           <div>
             <Wallpaper pickedWallpaper={selectedWallpaper} />
           </div>
-          <div>
-            <label htmlFor="payfrom">Pay From</label>
-            <Dropdown data={icondata} onSelected={handlePaidFromChange} />
-          </div>
-          <div>
-            <label htmlFor="date">Pick date</label>
-            <Dropdown />
+          <div className="flex items-center my-3 spce-x-6">
+            <div>
+              <label htmlFor="payfrom">Pay From</label>
+              <Dropdown data={icondata} onSelected={handlePaidFromChange} />
+            </div>
+            <div>
+              <label htmlFor="date">Pick date</label>
+              <Dropdown
+                data={dateData}
+                onSelected={handledateChange}
+              />
+            </div>
           </div>
         </form>
       </div>
