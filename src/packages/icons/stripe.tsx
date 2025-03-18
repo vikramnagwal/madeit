@@ -1,9 +1,5 @@
-import Image from "next/image";
-import { SVGProps } from "react";
 
-Image
-
-export function Stripe(props: SVGProps<SVGSVGElement>) {
+export function Stripe() {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +7,6 @@ export function Stripe(props: SVGProps<SVGSVGElement>) {
         id="stripe"
         width="46"
         height="46"
-        {...props}
       >
         <g id="Layer_2">
           <g id="Layer_1-2">

@@ -1,4 +1,4 @@
-export function Paypal(props : React.SVGProps<SVGSVGElement>) {
+export function Paypal() {
     return (
       <svg
         width="52px"

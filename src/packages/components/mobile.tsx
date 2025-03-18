@@ -10,6 +10,7 @@ import { PiCellSignalFull } from "react-icons/pi";
 import { MdBattery80 } from "react-icons/md";
 import { Signal } from "@/packages/icons/signal";
 import { useDownload } from "../hooks/use-download";
+import Image from "next/image";
 
 
 const mobileVariants = cva(
@@ -62,9 +63,7 @@ export const MobileTypeContext = createContext<Pick<MobileProps, "variant">>({
 export function Mobile({ variant, notificationNumber = 1, options, className, children }: MobileProps) {
 
   const notifications = Array.from({ length: notificationNumber}, (_, i) => i);
-  const hours = moment().format('h:mm');
-
-  const [time, setTime] = useState(hours);
+  const time = moment().format('h:mm');
 
   const { downloadImage } = useDownload();
   return (
@@ -73,7 +72,7 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
         className={cn(mobileVariants({ variant }), "relative", className)}
         id="image"
       >
-        <img
+        <Image
           src={options.wallpaper ? options.wallpaper : "/one.webp"}
           alt="wallpaper"
           className="absolute inset-0 w-full h-full object-cover -z-10"

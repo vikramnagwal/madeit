@@ -1,7 +1,4 @@
-import { SVGProps } from "react";
-
-
-export function Gumroad(props: SVGProps<SVGSVGElement>) {
+export function Gumroad() {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +7,6 @@ export function Gumroad(props: SVGProps<SVGSVGElement>) {
         fill="none"
         viewBox="0 0 256 256"
         id="gumroad"
-        {...props}
       >
         <rect width="224" height="224" x="16" y="16" fill="#EEE" rx="70"></rect>
         <path

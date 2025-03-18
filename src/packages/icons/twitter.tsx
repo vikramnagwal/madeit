@@ -1,6 +1,4 @@
-import { SVGProps } from "react";
-
-export function X(props: SVGProps<SVGSVGElement>) {
+export function X() {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +7,6 @@ export function X(props: SVGProps<SVGSVGElement>) {
         fill="none"
         viewBox="0 0 512 512"
         id="twitter"
-        {...props}
       >
         <g clipPath="url(#clip0_84_15697)">
           <rect width="512" height="512" fill="#000" rx="60"></rect>
