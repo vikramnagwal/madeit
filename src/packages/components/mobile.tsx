@@ -81,7 +81,7 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
         />
         {/* mobile navbar */}
         <div className="flex items-center justify-between px-4 py-1 absolute top-2 left-1/2 -translate-x-1/2 w-full">
-          <p className="text-xs font-thin">{options.networkCarrier}</p>
+          <p className="text-xs font-light">{options.networkCarrier}</p>
           <div className="flex items-center space-x-2">
             {variant === "iphone" ? (
               <>
