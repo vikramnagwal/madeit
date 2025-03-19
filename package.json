@@ -23,6 +23,7 @@
 		"dom-to-image": "^2.6.0",
 		"embla-carousel-react": "^8.5.2",
 		"framer-motion": "^12.4.10",
+		"html-to-image": "^1.11.13",
 		"html2canvas": "^1.4.1",
 		"lucide-react": "^0.477.0",
 		"moment": "^2.30.1",
