@@ -76,6 +76,8 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
           src={options.wallpaper ? options.wallpaper : "/one.webp"}
           alt="wallpaper"
           className="absolute inset-0 w-full h-full object-cover -z-10"
+          width={100}
+          height={100}
         />
         {/* mobile navbar */}
         <div className="flex items-center justify-between px-4 py-1 absolute top-2 left-1/2 -translate-x-1/2 w-full">

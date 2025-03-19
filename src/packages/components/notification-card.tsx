@@ -81,9 +81,9 @@ export function NotificationCard({
                 from{" "}
                 <span>
                   {showSender ? (
-                    <span>{sender}</span>
-                  ) : (
                     <span className="inline-block w-32 h-4 bg-black backdrop-blur-lg z-30 align-middle" />
+                  ) : (
+                    <span>{sender}</span>
                   )}
                 </span>
               </>
