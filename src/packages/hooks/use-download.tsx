@@ -18,13 +18,14 @@ export function useDownload() {
       dock.style.display = "none";
       const rect = image.getBoundingClientRect();
 
+      await document.fonts.ready;
+
       const dataUrl = await toPng(image, {
         height: Math.ceil(rect.height * 2),
         width: Math.ceil(rect.width * 2),
         pixelRatio: 2,
         style: {
-          transform: 'scale(2)',
-           transformOrigin: "top left",
+          transform: 'none',
           overflow: "visible",
           margin: "0",
           padding: image.style.padding || "0",
