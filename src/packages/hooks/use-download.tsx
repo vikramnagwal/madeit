@@ -13,17 +13,18 @@ export function useDownload() {
     }
 
     try {
-      new Promise((resolve) => setTimeout(resolve, 300));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       dock.style.display = "none";
       const rect = image.getBoundingClientRect();
-      await new Promise((resolve) => setTimeout(resolve, 100));
 
       const dataUrl = await toPng(image, {
-        height: Math.ceil(rect.height),
-        width: Math.ceil(rect.width),
+        height: Math.ceil(rect.height * 2),
+        width: Math.ceil(rect.width * 2),
+        pixelRatio: 2,
         style: {
-          transform: "none",
+          transform: 'scale(2)',
+           transformOrigin: "top left",
           overflow: "visible",
           margin: "0",
           padding: image.style.padding || "0",
