@@ -1,5 +1,7 @@
+'use client';
+
 import { useCallback } from "react";
-import domtoimage from "dom-to-image";
+import { toPng } from "html-to-image";
 
 export function useDownload() {
   const downloadImage = useCallback(async () => {
@@ -11,11 +13,13 @@ export function useDownload() {
     }
 
     try {
+      new Promise((resolve) => setTimeout(resolve, 300));
+
       dock.style.display = "none";
       const rect = image.getBoundingClientRect();
       await new Promise((resolve) => setTimeout(resolve, 100));
 
-      const dataUrl = await domtoimage.toPng(image, {
+      const dataUrl = await toPng(image, {
         height: Math.ceil(rect.height),
         width: Math.ceil(rect.width),
         style: {

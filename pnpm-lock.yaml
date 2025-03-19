@@ -41,6 +41,9 @@ dependencies:
   framer-motion:
     specifier: ^12.4.10
     version: 12.4.10(react-dom@19.0.0)(react@19.0.0)
+  html-to-image:
+    specifier: ^1.11.13
+    version: 1.11.13
   html2canvas:
     specifier: ^1.4.1
     version: 1.4.1
@@ -2739,6 +2742,10 @@ packages:
     dependencies:
       function-bind: 1.1.2
     dev: true
+
+  /html-to-image@1.11.13:
+    resolution: {integrity: sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg==}
+    dev: false
 
   /html2canvas@1.4.1:
     resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
