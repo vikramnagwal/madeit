@@ -149,7 +149,7 @@ export default function GeneratePage() {
           <div>
             <Wallpaper pickedWallpaper={selectedWallpaper} />
           </div>
-          <div className="flex items-center my-3 spce-x-6">
+          <div className="flex items-center my-3 mx-auto spce-x-3">
             <div>
               <label htmlFor="payfrom">Pay From</label>
               <Dropdown data={icondata} onSelected={handlePaidFromChange} />

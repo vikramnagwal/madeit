@@ -10,8 +10,6 @@ import { PiCellSignalFull } from "react-icons/pi";
 import { MdBattery80 } from "react-icons/md";
 import { Signal } from "@/packages/icons/signal";
 import { useDownload } from "../hooks/use-download";
-import Image from "next/image";
-
 
 const mobileVariants = cva(
   "flex flex-col relative w-[300px] h-[600px] bg-cover mx-auto overflow-hidden",
@@ -72,7 +70,7 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
         className={cn(mobileVariants({ variant }), "relative", className)}
         id="image"
       >
-        <Image
+        <img
           src={options.wallpaper ? options.wallpaper : "/one.webp"}
           alt="wallpaper"
           className="absolute inset-0 w-full h-full object-cover -z-10"
