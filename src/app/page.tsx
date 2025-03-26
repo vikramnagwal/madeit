@@ -149,8 +149,8 @@ export default function Home() {
           <div>
             <Wallpaper pickedWallpaper={selectedWallpaper} />
           </div>
-          <div className="flex items-center my-3 spce-x-6">
-            <div>
+          <div className="flex md:flex-row flex-col items-center mt-6 space-y-2">
+            <div className="">
               <label htmlFor="payfrom">Pay From</label>
               <Dropdown data={icondata} onSelected={handlePaidFromChange} />
             </div>

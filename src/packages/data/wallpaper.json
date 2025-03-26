@@ -23,5 +23,25 @@
         "id": 5,
         "path": "/five.webp",
         "title": "Wallpaper 5"
+    },
+    {
+        "id": 6,
+        "path": "/six.jpg",
+        "title": "Wallpaper 6"
+    },
+    {
+        "id": 7,
+        "path": "/seven.jpg",
+        "title": "Wallpaper 7"
+    },
+    {
+        "id": 8,
+        "path": "/eight.jpg",
+        "title": "Wallpaper 8"
+    },
+    {
+        "id": 9,
+        "path": "/nine.jpg",
+        "title": "Wallpaper 9"
     }
 ]
