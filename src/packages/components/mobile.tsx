@@ -72,7 +72,7 @@ export function Mobile({ variant, notificationNumber = 1, options, className, ch
         className={cn(mobileVariants({ variant }), "relative", className)}
         id="image"
       >
-        <Image
+        <img
           src={options.wallpaper ? options.wallpaper : "/one.webp"}
           alt="wallpaper"
           className="absolute inset-0 w-full h-full object-cover -z-10"
