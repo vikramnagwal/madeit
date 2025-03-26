@@ -21,8 +21,8 @@ export function useDownload() {
       await document.fonts.ready;
 
       const dataUrl = await toPng(image, {
-        height: Math.ceil(rect.height * 2),
-        width: Math.ceil(rect.width * 2),
+        height: Math.ceil(rect.height),
+        width: Math.ceil(rect.width),
         pixelRatio: 2,
         style: {
           transform: 'none',
